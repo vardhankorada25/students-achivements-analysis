@@ -1,0 +1,10 @@
+[2025-12-20 13:07:57,913]22root -INFO - Entered the data ingestion method
+[2025-12-20 13:07:57,929]25root -INFO - Read the dataset as dataframe
+[2025-12-20 13:07:57,935]28root -INFO - Train test split initiated
+[2025-12-20 13:07:57,943]32root -INFO - Ingestion of the data is completed
+[2025-12-20 13:07:57,947]56root -INFO - Read train and test data completed
+[2025-12-20 13:07:57,947]57root -INFO - Obtaining preprocessor object
+[2025-12-20 13:07:57,947]24root -INFO - Data Transformation initiated
+[2025-12-20 13:07:57,947]40root -INFO - Numerical and categorical pipeline completed
+[2025-12-20 13:07:57,967]68root -INFO - Saved preprocessing object
+[2025-12-20 13:07:57,968]79root -INFO - Exception occurred in data transformation
