@@ -46,9 +46,9 @@ class DataTransformation:
             )
             return preprocessor
             
-        except:
+        except Exception as e:
             logger.logging.info("Exception occurred in data transformation")
-            raise CustomException(sys.exc_info())
+            raise CustomException(e, sys.exc_info())
     def initiate_data_transformation(self,train_path,test_path):
         try:
             train_df=pd.read_csv(train_path)
@@ -57,7 +57,6 @@ class DataTransformation:
             logger.logging.info("Obtaining preprocessor object")
             preprocessing_obj=self.get_data_transformer_object()
             target_column_name='math_score'
-            numerical_columns = ['reading_score', 'writing_score']
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]
             input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
