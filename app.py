@@ -1,9 +1,10 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,redirect,url_for
 
 from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
 application=Flask(__name__)
 app=application
+app.secret_key = 'your_secret_key_here'  # Required for flash messages
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -34,7 +35,11 @@ def predict_datapoint():
             print("Dataframe--->",pred_df)
             predict_pipeline=PredictPipeline() 
             results=predict_pipeline.predict(pred_df)
-            return render_template('home.html',results=results[0])
+            # Store result in session or flash, but for simplicity, redirect and show in GET
+            # Since we can't easily pass data via redirect, we'll use flash
+            from flask import flash
+            flash(f"Prediction Result: {results[0]}")
+            return redirect(url_for('predict_datapoint'))
 if __name__=="__main__":
      app.run(host='0.0.0.0',debug=True)
 
